@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Pacifico&display=swap&family=Roboto+Slab:wght@400;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;              
+  overflow-x: hidden !important;
+  font-family: 'Times New Roman', sans-serif;      
+}
+.page1, .page2 {
+  /* lavender→blue gradient on both pages */
+  background: linear-gradient(100deg, 
+    #e0c3fc 20%,   /* soft lavender */
+    #56a9fc 80%    /* bright blue */
+  );
+  background-attachment: fixed;
+}
+.page1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  text-align: center;
+  color: #fff;
+  width: 100%;
+  height: 100vh;             /* full viewport */
+  overflow: hidden;          /* no scrollbars */
+}
+.page2 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  color: #fff;
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 60px;        /* space for garland */
+  overflow-y: auto;         /* enable vertical scroll */
+  overflow-x: hidden;
+}
+#particles-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+.top-garland {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: auto;
+  max-height: 200px;              
+  object-fit: cover;
+  pointer-events: none;
+  animation: drop 1s ease-out;
+  z-index: 15;
+}
+.content {
+  position: relative;
+  z-index: 10;
+  width: 90%;
+  max-width: 600px;
+  margin: 1rem auto;             
+  padding-bottom: 1rem;
+  max-height: none;               
+  overflow-y: auto;               
+}
+.house {
+  width: 100%;                    
+  max-width: none; 
+  display: block;
+  opacity: 0;
+  animation: fadeIn 2s forwards 0.8s;
+  transform: translateX(-2%); 
+}
+.title, .title2 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 0.5rem;
+}
+.page1 .title {
+  font-size: 3rem;
+  animation: popIn 1s ease-out;
+}
+.page1 .btn {
+  font-family: 'Times New Roman', Times, serif;
+}
+.page2 .title2 {
+  font-size: 1.8rem;       
+  margin-bottom: 0.5rem;
+}
+.page2 .body-text {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.8rem;
+}
+.page2 .hostline {
+  font-family: 'Merriweather', sans-serif;
+  font-size: 0.8rem;
+}
+.page2 .name,
+.page2 .names {
+  font-family: 'Times New Roman', serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.page2 .datetime {
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.2rem;
+}
+.page2 .location {
+  font-family: 'Playfair Display', monospace;
+  font-size: 1.2rem;
+}
+.page2 .rsvp {
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.2rem;
+}
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+.delay-1 { animation-delay: 1.2s; }
+.delay-2 { animation-delay: 1.4s; }
+.delay-3 { animation-delay: 1.6s; }
+.delay-4 { animation-delay: 1.8s; }
+.delay-5 { animation-delay: 2.0s; }
+.delay-6 { animation-delay: 2.2s; }
+
+.btn-wrap {
+  position: relative;
+  display: inline-block;
+  margin-top: 1rem;
+}
+.btn-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+  animation: blink 1s step-end infinite;
+}
+.arrow {
+  width: 2.5rem;
+  height: auto;
+  margin-top: 0.3rem;
+  stroke: #fff;
+  stroke-width: 6;
+  stroke-linecap: round;
+  animation: popIn 1s ease-out 0.5s forwards;
+  opacity: 0;
+}
+button {
+  font-size: 1.2rem;
+  font-family: 'Playfair Display', serif;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  background: rgba(255,255,255,0.9);
+  color: #333;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform .2s;
+  white-space: nowrap;
+  max-width: 90vw;
+}
+button:hover {
+  transform: scale(1.05);
+}
+.page2 p a {
+  color: #fff;
+  text-decoration: underline;
+}
+@keyframes popIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+@keyframes drop {
+  from { transform: translateY(-200px); opacity: 0; }
+  to   { transform: translateY(0);       opacity: 1; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes blink {
+  0%,50%,100% { opacity: 1; }
+  25%,75%     { opacity: 0; }
+}
+
+
+
